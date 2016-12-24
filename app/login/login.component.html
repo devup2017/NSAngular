@@ -1,0 +1,37 @@
+<StackLayout>
+	<StackLayout #initialContainer
+		class="initial-container">
+		<label text="Sign In:"></label>
+	</StackLayout>
+	<StackLayout #mainContainer 
+		class="main-container">
+	    <TextField 
+	    	hint="Username..." 
+	    	keyboardType="email"
+	    	autocorrect="false" 
+	    	autocapitalizationType="none" 
+	    	returnKeyType="next" 
+	    	(returnPress)="focusPassword()"
+	    	[(ngModel)]="user.email"
+	    	[isEnabled]="!isAuthenticating"></TextField>
+	    <TextField 
+	    	#password
+	    	hint="Password..." 
+	    	secure="true"
+	    	returnKeyType="done"
+	    	(returnPress)="submit()"
+	    	[(ngModel)]="user.password"
+	    	[isEnabled]="!isAuthenticating"></TextField>
+	    <Button 
+	    	id="signin"
+	    	class="button"
+	    	[isEnabled]="!isAuthenticating"
+	    	text="SIGN IN"
+	    	(tap)="login()"></Button>
+	    <Button 
+	    	id="signup"
+	    	class="button" 
+	    	text="SIGN UP"
+	    	(tap)="onSingUp()"></Button>   
+	</StackLayout>
+</StackLayout>
